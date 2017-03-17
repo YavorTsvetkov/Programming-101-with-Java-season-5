@@ -4,22 +4,24 @@ import java.util.*;
 
 public class PancakeSolver {
 	
+	private static Scanner sc;
+	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		
-		int t = sc.nextInt();
+		int t = Integer.parseInt(sc.nextLine());
 		
 		for (int i = 0; i < t; i++) {
 			System.out.println(solve(sc));
 		}
-		sc.close(); // closing the stream
+
 	}
 	
 	private static int solve(Scanner sc) {
 		int mekiciCount = sc.nextInt();
 		int kotloniCount = sc.nextInt();
 		
-		ArrayList<Integer> kotloni = new ArrayList<Integer>();
+		List<Integer> kotloni = new ArrayList<Integer>();
 		
 		for (int i = 0; i < kotloniCount; i++) {
 			kotloni.add(sc.nextInt());
@@ -37,7 +39,7 @@ public class PancakeSolver {
 	 * @param kotloni
 	 * @return
 	 */
-	private static int calculateMinimumTime(int mekiciCount, int kotloniCount,ArrayList<Integer> kotloni) {
+	private static int calculateMinimumTime(int mekiciCount, int kotloniCount,List<Integer> kotloni) {
 		int low = 0;
 		int high = Collections.max(kotloni) * mekiciCount;
 		
@@ -56,7 +58,7 @@ public class PancakeSolver {
 	}
 
 	private static boolean canCookMekici(int mekiciCount, int kotloniCount,
-			ArrayList<Integer> kotloni, int availableTime) {
+			                             List<Integer> kotloni, int availableTime) {
 		
 		int cookedMekici = 0;
 		for (Integer kotlon : kotloni) {
