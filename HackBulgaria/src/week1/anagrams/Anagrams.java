@@ -5,7 +5,14 @@ import week1.anagrams.Sort;
 
 public class Anagrams {
 	
-	/**
+	
+	 /**
+	  * Checks if two words are anagrams.
+	  * For each word in the first word 
+	  * @param a
+	  * @param b
+	  * @return
+	  */
 	public static boolean areAnagramsSlow(String a, String b) {
 		if (a.length() != b.length()) {
 			return false;
@@ -33,30 +40,30 @@ public class Anagrams {
 		
 		return areAnagrams;
 	}
-	**/
 	
 	/**
 	 * Checks if two words are anagrams.
 	 * First sorts the words and then checks char by char.
-	 * Time complexity - O(nlogn)
-	 * Space complexity - O(n) 
+	 * Time complexity - O(mlogm)
+	 * Space complexity - O(m);
+	 * m - first word' s length (or second word' s) 
 	 * @param firstWord
 	 * @param secondWord
-	 * @return true or false if the words are anagrams or are not
+	 * @return true or false if the words are anagrams or not
 	 */
 	public static boolean areAnagrams(String firstWord, String secondWord) {
 		if (firstWord.length() != secondWord.length()) {
 			return false;
 		}
 		
-		StringBuilder aWord = new StringBuilder(firstWord.toLowerCase());
-		StringBuilder bWord = new StringBuilder(secondWord.toLowerCase());
+		StringBuilder firstSequence = new StringBuilder(firstWord.toLowerCase());
+		StringBuilder secondSequence = new StringBuilder(secondWord.toLowerCase());
 		
-		Sort.quickSort(aWord);
-		Sort.quickSort(bWord);
+		Sort.quickSort(firstSequence);
+		Sort.quickSort(secondSequence);
 	
-		for (int i = 0; i < aWord.length(); i++) {
-			if (aWord.charAt(i) != bWord.charAt(i)) {
+		for (int i = 0; i < firstSequence.length(); i++) {
+			if (firstSequence.charAt(i) != secondSequence.charAt(i)) {
 				return false;
 			}
 		}
