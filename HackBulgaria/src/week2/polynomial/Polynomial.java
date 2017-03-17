@@ -5,6 +5,12 @@ import java.util.TreeMap;
 import java.util.Map;
 
 public class Polynomial {
+	
+	/**
+	 * Polynomial is kept in a tree map.
+	 * key - monomial' s degree
+	 * value - monomial' s coefficient 
+	 */
 	private Map<Integer, Integer> polynomial;
 
 	public Polynomial() {
