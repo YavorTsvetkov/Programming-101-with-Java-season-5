@@ -1,7 +1,7 @@
 package week1.anagrams;
 
 import java.util.Scanner;
-import week1.anagrams.QuickSort;
+import week1.anagrams.Sort;
 
 public class Anagrams {
 	
@@ -52,8 +52,8 @@ public class Anagrams {
 		StringBuilder aWord = new StringBuilder(firstWord.toLowerCase());
 		StringBuilder bWord = new StringBuilder(secondWord.toLowerCase());
 		
-		QuickSort.quickSort(aWord);
-		QuickSort.quickSort(bWord);
+		Sort.quickSort(aWord);
+		Sort.quickSort(bWord);
 	
 		for (int i = 0; i < aWord.length(); i++) {
 			if (aWord.charAt(i) != bWord.charAt(i)) {

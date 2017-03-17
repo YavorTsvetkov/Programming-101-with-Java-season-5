@@ -1,8 +1,7 @@
 package week1.anagrams;
 
-public class QuickSort {
-	
-public static void selectionSort(StringBuilder word) {
+public class Sort {
+	public static void selectionSort(StringBuilder word) {
 		
 		for (int i = 0; i < word.length() - 1; i++) {
 			for (int j = i + 1; j < word.length(); j++) {
