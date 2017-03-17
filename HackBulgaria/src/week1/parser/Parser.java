@@ -1,4 +1,4 @@
-package week1.parser;
+package src.week1.parser;
 
 import java.io.IOException;
 import java.nio.file.Files;
