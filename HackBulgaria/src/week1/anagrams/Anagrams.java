@@ -37,7 +37,9 @@ public class Anagrams {
 	
 	/**
 	 * Checks if two words are anagrams.
-	 * First sorts the words and then checks char by char. 
+	 * First sorts the words and then checks char by char.
+	 * Time complexity - O(nlogn)
+	 * Space complexity - O(n) 
 	 * @param firstWord
 	 * @param secondWord
 	 * @return true or false if the words are anagrams or are not
