@@ -1,4 +1,4 @@
-package week4;
+package week4.binarySearchTree;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +33,7 @@ public class MyBinaryTree implements MyBinaryTreeInterface {
 			
 			Node left = build(values.subList(0, middle));
 			
-			Node right = build(values.subList(middle - 1, values.size() ));
+			Node right = build(values.subList(middle , values.size() - 1));
 			
 			return new Node(value, left, right);
 		}
@@ -151,19 +151,14 @@ public class MyBinaryTree implements MyBinaryTreeInterface {
 		
 	}
 	
-	
-	
-	
-	public static void main(String[] args) {
-		List<Integer> values = Arrays.asList(1, 2, 4, 6, 7, 1, 12, 15, 20, 23 );
-		Node root = Node.getBuild(values);
-		
-		
-	}
-
 	public void print() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+		
+	public static void main(String[] args) {
+		List<Integer> values = Arrays.asList(1, 2, 4, 6, 7, 1, 12, 15, 20, 23 );
+		Node root = Node.getBuild(values);
+	}
 }

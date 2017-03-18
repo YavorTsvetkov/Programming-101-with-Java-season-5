@@ -1,4 +1,4 @@
-package week4;
+package week4.queue;
 
 public interface MyQueueInterface<T extends Comparable <T>> {
 	/**

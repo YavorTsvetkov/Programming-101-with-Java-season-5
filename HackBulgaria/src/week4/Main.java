@@ -1,6 +1,6 @@
 package week4;
 
-import week2.MyLinkedList;
+import week4.genericBinarySearchTree.MyBinarySearchTree;
 
 public class Main {
 
@@ -8,6 +8,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		/*
 		MyStackInterface<Integer> stack = new MyLinkedList<Integer>();
 		MyStackInterface<Integer> secondStack = new MyLinkedList<Integer>();
 		
@@ -26,7 +27,7 @@ public class Main {
 		System.out.println();
 		
 		System.out.println(stack.getMinValue());
-		/*
+		
 		while (stack.getSize() > 0) {
 			if (stack.getSize() == 0) {
 				break;
@@ -52,6 +53,24 @@ public class Main {
 			}
 		}
 		*/		
+		
+		MyBinarySearchTree<Integer> tree = new MyBinarySearchTree<Integer>();
+		tree.insert(7);
+		tree.insert(5);
+		tree.insert(10);
+		tree.insert(6);
+		tree.insert(3);
+		tree.insert(8);
+		tree.insert(13);
+		tree.insert(1);
+		tree.insert(7);
+		tree.insert(9);
+		tree.insert(11);
+		tree.insert(14);
+		
+		tree.print();
+		
+		System.out.println(tree.find(15));
 	}
 	
 	public static int multiplication(int[] number, int index) {

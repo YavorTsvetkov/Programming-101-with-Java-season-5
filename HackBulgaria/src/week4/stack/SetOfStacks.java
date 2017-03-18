@@ -1,4 +1,4 @@
-package week4;
+package week4.stack;
 
 import week2.MyLinkedList;
 import week2.MyLinkedListInterface;

@@ -1,4 +1,4 @@
-package week4;
+package week4.binarySearchTree;
 
 public interface MyBinaryTreeInterface {
 	

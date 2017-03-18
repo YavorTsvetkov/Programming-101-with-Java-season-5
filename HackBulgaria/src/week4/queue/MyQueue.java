@@ -1,6 +1,7 @@
-package week4;
+package week4.queue;
 
 import week2.MyLinkedList;
+import week4.stack.MyStackInterface;
 
 public class MyQueue<T extends Comparable<T>> implements MyQueueInterface<T> {
 	

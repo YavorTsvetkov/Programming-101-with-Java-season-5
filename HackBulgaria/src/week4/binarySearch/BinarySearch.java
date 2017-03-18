@@ -1,12 +1,10 @@
-package week4;
+package week4.binarySearch;
 
 public class BinarySearch {
 	//1 2 5 8 11 15 20 25
 	
 	public static void main(String[] args) {
 		int[] arr = {2, 2, 2, 5, 8, 11, 15, 20, 20};
-		
-		
 		
 		System.out.println(lowerBound(arr, 2));
 	}
