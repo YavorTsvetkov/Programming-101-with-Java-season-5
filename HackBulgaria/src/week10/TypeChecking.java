@@ -6,14 +6,16 @@ import java.util.Scanner;
 
 public class TypeChecking {
 
+	private static Scanner input;
+	
 	public static void main(String[] args) {
 		Map<String, String[]> funcs = readFunctions();
-		String[] composition =  readComp();
+		String[] composition =  readFunctionComposition();
 		
-		String second = composition[1];
-		String first = composition[0];
+		String innerFunction = composition[1];
+		String outerFunction = composition[0];
 		
-		if (funcs.get(second)[1].equals(funcs.get(first)[0])) {
+		if (funcs.get(innerFunction)[1].equals(funcs.get(outerFunction)[0])) {
 			System.out.println("True");
 			
 
@@ -23,13 +25,22 @@ public class TypeChecking {
 		}
 	}
 	
+	/**
+	 * Reads functions definitions.
+	 * First takes number of functions n as input and then reads function definition n time.
+	 * Functions definitions is kept in a map where: 
+	 * key - function's name.
+	 * value - String array with first element - argument type and 
+	 *         and second element result type.
+	 * @return Map with functions definitions.
+	 */
 	public static Map<String, String[]> readFunctions() {
-		Scanner input = new Scanner(System.in);
+		input = new Scanner(System.in);
 		
 		System.out.print("Enter the number of function definitions: ");
 		int n = Integer.parseInt(input.nextLine());
 		
-		Map<String, String[]> func = new HashMap();
+		Map<String, String[]> func = new HashMap<String, String[]>();
 		
 		System.out.println("Enter function definitions:");
 		for (int i = 0; i < n; i++) {
@@ -48,8 +59,13 @@ public class TypeChecking {
 		return func;
 	}
 	
-	public static String[] readComp() {
-		Scanner input = new Scanner(System.in);
+	/**
+	 * Reads function composition.
+	 * @return String array with first element outer function and
+	 *         third element inner function.
+	 */
+	public static String[] readFunctionComposition() {
+		input = new Scanner(System.in);
 		
 		System.out.print("Enter function composition: ");
 		String[] line = input.nextLine().split(" ");
