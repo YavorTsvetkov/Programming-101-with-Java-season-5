@@ -175,16 +175,15 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 		}
 		
 		printRecursiveDFS(this.root);
-		//System.out.println(this.root.data);
-		//printRecursiveDFS(this.root.rightNode);
 	}
 	
 	private void printRecursiveDFS(Node currentNode) {
 		if (currentNode == null) {
 			return;
 		}
-		System.out.println(currentNode.data);
+		
 		printRecursiveDFS(currentNode.leftNode);
+		System.out.println(currentNode.data);
 		printRecursiveDFS(currentNode.rightNode);
 	}
 	
