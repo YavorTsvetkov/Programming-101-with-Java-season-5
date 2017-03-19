@@ -123,6 +123,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 
 	@Override
 	public T remove(T element) {
+		
 		 return null;
 	}
 
@@ -175,6 +176,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 		}
 		
 		printRecursiveDFS(this.root);
+		System.out.println();
 	}
 	
 	private void printRecursiveDFS(Node currentNode) {
@@ -183,7 +185,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 		}
 		
 		printRecursiveDFS(currentNode.leftNode);
-		System.out.println(currentNode.data);
+		System.out.print(currentNode.data + " ");
 		printRecursiveDFS(currentNode.rightNode);
 	}
 	
