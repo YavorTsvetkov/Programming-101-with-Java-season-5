@@ -5,10 +5,10 @@ import jdk.nashorn.internal.runtime.regexp.joni.SearchAlgorithm;
 public class MyBinarySearchTree<T extends Comparable<T>> implements
                                                          MyBinarySearchTreeInterface<T> {
 	
-	private class Node implements Comparable<Node> {
+	private static class Node<T> {
 		private T data;
-		private Node rightNode;
-		private Node leftNode;
+		private Node<T> rightNode;
+		private Node<T> leftNode;
 		
 		public Node(T data) {
 			this.data = data;
@@ -16,7 +16,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 			this.leftNode = null;
 		}
 		
-		public Node(T data, Node rightNode, Node leftNode) {
+		public Node(T data, Node<T> rightNode, Node<T> leftNode) {
 			this.data = data;
 			this.rightNode = rightNode;
 			this.leftNode = leftNode;
@@ -38,7 +38,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 			}
 			
 			if (object instanceof MyBinarySearchTree.Node) {
-				Node other = (Node)object;
+				Node<T> other = (Node<T>)object;
 				
 				if(this.data.equals(other.data)) {
 					return true;
@@ -47,34 +47,12 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 			
 			return false;
 		}
-
-		@Override
-		public int compareTo(MyBinarySearchTree<T>.Node obj) {
-			if(this.equals(obj)) {
-				return 0;
-			}
-			
-			if (this.data.compareTo(obj.data) > 0) {
-				return 1;
-			}
-			
-			if (this.data.compareTo(obj.data) < 0) {
-				return -1;
-			}
-			
-			return Integer.MIN_VALUE;
-		}
-		
-		@Override
-		public String toString() {
-			return (String)this.data;
-		}
 	}
 	
-	private Node root;
+	private Node<T> root;
 	
 	public MyBinarySearchTree(T data) {
-		this.root = new Node(data);
+		this.root = new Node<T>(data);
 	}
 	
 	public MyBinarySearchTree() {
@@ -87,7 +65,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 			throw new NullPointerException("Cannot add null element!");
 		}
 		
-		Node newNode = new Node(element);
+		Node<T> newNode = new Node<T>(element);
 		
 		if (this.root == null) {
 			this.root = newNode;
@@ -102,8 +80,8 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 	 * @param newNode - new node to be added
 	 * @param currentNode - starting node
 	 */
-	private void addRecursiveDFS(Node newNode, Node currentNode) {
-		if (newNode.compareTo(currentNode) > 0) {
+	private void addRecursiveDFS(Node<T> newNode, Node<T> currentNode) {
+		if (newNode.data.compareTo(currentNode.data) > 0) {
 			if (currentNode.rightNode == null) {
 				currentNode.rightNode = newNode;
 				
@@ -111,7 +89,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 				addRecursiveDFS(newNode, currentNode.rightNode);
 			}
 			
-		} else if (newNode.compareTo(currentNode) <= 0) {
+		} else if (newNode.data.compareTo(currentNode.data) <= 0) {
 			if (currentNode.leftNode == null) {
 				currentNode.leftNode = newNode;
 				
@@ -126,6 +104,16 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 		
 		 return null;
 	}
+	
+	private Node<T> findMin(Node<T> currentNode) {
+		Node<T> minNode = currentNode;
+		
+		while (minNode.leftNode != null) {
+			minNode = minNode.leftNode;
+		}
+		
+		return minNode;
+	}
 
 	@Override
 	public boolean find(T element) {
@@ -134,7 +122,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 			return false;
 		}
 		
-		Node searchedNode = findRecursiveDFS(element, this.root);
+		Node<T> searchedNode = findRecursiveDFS(element, this.root);
 		
 		if (searchedNode == null) {
 			return false;
@@ -144,7 +132,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 		}
 	}
 	
-	private Node findRecursiveDFS(T element, Node currentNode) {
+	private Node<T> findRecursiveDFS(T element, Node<T> currentNode) {
 		if (element.compareTo(currentNode.data) == 0) {
 			return currentNode;
 		}
@@ -169,6 +157,53 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 		return null;
 	}
 	
+	public static<T extends Comparable<T>> MyBinarySearchTree<T> buildBinarySearchTree(T[] arr) {
+		Sort.quickSort(arr);
+		int middle = arr.length / 2;
+		MyBinarySearchTree<T> tree = new MyBinarySearchTree<T>(arr[middle]);
+		
+		getFirstMiddle(arr, tree);
+		getSecondMiddle(arr, tree);
+		
+		return tree;
+	}
+	
+	private static<T extends Comparable<T>> void getFirstMiddle(T[] arr,
+														        MyBinarySearchTree<T> tree) {
+		int middle = arr.length / 2;
+		for (int i = middle - 1; i >= 0; i--) {
+			tree.insert(arr[i]);
+		}
+	}
+	
+	private static <T extends Comparable<T>> void getSecondMiddle(T[] arr,
+																  MyBinarySearchTree<T> tree) {
+		int middle = arr.length / 2;
+		for (int i = middle + 1; i < arr.length; i++) {
+			tree.insert(arr[i]);
+		}
+	}
+	
+	public static <T extends Comparable<T>> boolean areEquals(MyBinarySearchTree<T> firstTree,
+														      MyBinarySearchTree<T> secondTree) {
+		if (firstTree.root == null && secondTree.root == null) {
+			return false;
+		}
+		
+		return DFSCompare(firstTree.root, secondTree.root);
+	}
+	
+	private static <T extends Comparable<T>> boolean DFSCompare(Node<T> firstNode, 
+																Node<T> secondNode) {
+		if (firstNode != null && secondNode != null) {
+			return (firstNode.data.equals(secondNode.data) &&
+					DFSCompare(firstNode.rightNode, secondNode.rightNode) &&
+					DFSCompare(firstNode.leftNode, secondNode.leftNode));
+		}
+		
+		return false;
+	}
+	
 	public void print() {
 		if (this.root == null) {
 			System.out.println("Binary search tree is empty!");
@@ -189,13 +224,4 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 		printRecursiveDFS(currentNode.rightNode);
 	}
 	
-	private Node findMin(Node currentNode) {
-		Node minNode = currentNode;
-		
-		while (minNode.leftNode != null) {
-			minNode = minNode.leftNode;
-		}
-		
-		return minNode;
-	}
 }

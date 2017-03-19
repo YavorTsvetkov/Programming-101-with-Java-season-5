@@ -24,7 +24,7 @@ public class Sort {
 		int q = start - 1;
 		T pivot = array[end];
 		
-		for (int i = 0; i < end; i++) {
+		for (int i = start; i < end; i++) {
 			if (array[i].compareTo(pivot) < 0) {
 				q++;
 				swap(array, i, q);
@@ -41,15 +41,5 @@ public class Sort {
 		T swapper = array[firstIndex];
 		array[firstIndex] = array[secondIndex];
 		array[secondIndex] = swapper;
-	}
-	
-	public static void main(String[] args) {
-		Integer[] array = {7, 8, 6, 9, 1, 3, 2, 4, 5};
-		
-		quickSort(array);
-		
-		for (Integer n : array) {
-			System.out.print(n + " ");
-		}
 	}
 }
