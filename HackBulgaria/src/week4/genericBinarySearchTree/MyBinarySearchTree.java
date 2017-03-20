@@ -107,8 +107,13 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 
 	@Override
 	public T remove(T element) {
+		if (element == null) {
+			throw new IllegalArgumentException("Cannot remove null element");
+		}
 		
-		 return null;
+		Node<T> target = findRecursiveDFS(element, this.root);
+		
+		return null;
 	}
 	
 	private Node<T> findMin(Node<T> currentNode) {
