@@ -41,9 +41,11 @@ public class Function {
 		return result.toString();
 	}
 	
+	/**
 	public static int calcFuncBody(Function func, Function[] funcs) {
 		
 	}
+	**/
 	
 	public int calcFunc(int argument) {
 		List<Integer> number = new ArrayList<Integer>();
@@ -65,7 +67,8 @@ public class Function {
 					number.add(digit * -1);
 				}
 			}
-			else if 
+			/**
+			else if**/ 
 		}
 		int result = calcSum(number);
 		return result;

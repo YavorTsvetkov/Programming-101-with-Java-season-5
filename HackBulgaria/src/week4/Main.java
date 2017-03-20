@@ -12,6 +12,9 @@ public class Main {
 		MyBinarySearchTree<Integer> tree2 = MyBinarySearchTree.buildBinarySearchTree(arr2);
 		MyBinarySearchTree<Integer> tree1 = MyBinarySearchTree.buildBinarySearchTree(arr1);
 		
+		tree1.print();
+		tree2.print();
+		
 		System.out.println(MyBinarySearchTree.areEquals(tree1, tree2));
 	}
 	

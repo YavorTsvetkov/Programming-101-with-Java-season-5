@@ -1,8 +1,6 @@
 package week2;
 
-import java.util.*;
-import week2.polynomial.Polynomial;
-import week2.GameOfLife.GameOfLife;
+
 
 
 public class Main {
