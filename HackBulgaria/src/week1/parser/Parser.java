@@ -1,27 +1,6 @@
 package week1.parser;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.LinkedList;
-import java.util.List;
-
 public class Parser {
-	
-	private static String[] readToArray(String filename) {
-        List<String> contents = new LinkedList<String>();
-        try{
-            contents = read(filename);
-        }catch(IOException e){
-            e.printStackTrace();
-            return null;
-        }
-        return contents.toArray(new String[contents.size()]);
-    }
-	
-	private static List<String> read(String filename) throws java.io.IOException {
-        return Files.readAllLines(Paths.get(filename));
-    }
 	
 	public static void main(String[] args) {
 		if(args.length < 1) {
@@ -32,7 +11,7 @@ public class Parser {
 		boolean inObject = false;
 		boolean lastWasPair = false;
 
-		String[] content = readToArray(args[0]);
+		String[] content = Listify.readToArray(args[0]);
 
 		for(String line: content) {
 			if(isEmpty(line.trim())) {
