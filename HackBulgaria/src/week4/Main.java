@@ -5,17 +5,22 @@ import week4.genericBinarySearchTree.MyBinarySearchTree;
 public class Main {
 	public static void main(String[] args) {
 		
-		Integer[] arr1 = {7, 8, 6, 9, 1, 3, 2, 4, 5};
+		Integer[] arr1 = {3, 1, 5, 4, 2};
 		Integer[] arr2 = {3, 4, 6, 9, 5, 7, 2, 8, 1};
 		
+		MyBinarySearchTree.sort(arr1);
+		MyBinarySearchTree.sort(arr2);
 		
-		MyBinarySearchTree<Integer> tree2 = MyBinarySearchTree.buildBinarySearchTree(arr2);
-		MyBinarySearchTree<Integer> tree1 = MyBinarySearchTree.buildBinarySearchTree(arr1);
+		printArray(arr1);
+		printArray(arr2);
+	}
+	
+	private static <T extends Comparable<T>> void printArray(T[] arr) {
+		for (T n : arr) {
+			System.out.print(n + " ");
+		}
 		
-		tree1.print();
-		tree2.print();
-		
-		System.out.println(MyBinarySearchTree.areEquals(tree1, tree2));
+		System.out.println();
 	}
 	
 	public static int multiplication(int[] number, int index) {

@@ -157,31 +157,30 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 		return null;
 	}
 	
-	public static<T extends Comparable<T>> MyBinarySearchTree<T> buildBinarySearchTree(T[] arr) {
-		Sort.quickSort(arr);
-		int middle = arr.length / 2;
-		MyBinarySearchTree<T> tree = new MyBinarySearchTree<T>(arr[middle]);
+	public static<T extends Comparable<T>> void sort(T[] arr) {
+		MyBinarySearchTree<T> tree = new MyBinarySearchTree<T>();
 		
-		getFirstMiddle(arr, tree);
-		getSecondMiddle(arr, tree);
-		
-		return tree;
-	}
-	
-	private static<T extends Comparable<T>> void getFirstMiddle(T[] arr,
-														        MyBinarySearchTree<T> tree) {
-		int middle = arr.length / 2;
-		for (int i = middle - 1; i >= 0; i--) {
+		for (int i = 0; i < arr.length; i++) {
 			tree.insert(arr[i]);
 		}
+		
+		DFSSwap(tree, arr, tree.root);
+		index = 0;
 	}
 	
-	private static <T extends Comparable<T>> void getSecondMiddle(T[] arr,
-																  MyBinarySearchTree<T> tree) {
-		int middle = arr.length / 2;
-		for (int i = middle + 1; i < arr.length; i++) {
-			tree.insert(arr[i]);
+	private static int index = 0;
+	
+	private static <T extends Comparable<T>> void DFSSwap(MyBinarySearchTree<T> tree, 
+														  T[] arr,
+														  Node<T> root) {
+		if (root == null) {
+			return;
 		}
+		
+		DFSSwap(tree, arr, root.leftNode);
+		arr[index] = root.data;
+		index++;
+		DFSSwap(tree, arr, root.rightNode);
 	}
 	
 	public static <T extends Comparable<T>> boolean areEquals(MyBinarySearchTree<T> firstTree,
@@ -201,7 +200,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 					DFSCompare(firstNode.leftNode, secondNode.leftNode));
 		}
 		
-		return false;
+		return true;
 	}
 	
 	public void print() {
@@ -214,7 +213,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 		System.out.println();
 	}
 	
-	private void printRecursiveDFS(Node currentNode) {
+	private void printRecursiveDFS(Node<T> currentNode) {
 		if (currentNode == null) {
 			return;
 		}
