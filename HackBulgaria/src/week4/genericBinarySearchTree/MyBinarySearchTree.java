@@ -59,6 +59,12 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 		this.root = null;
 	}
 	
+	public void buildFromArray(T[] arr) {
+		for (T el : arr) {
+			this.insert(el);
+		}
+	}
+	
 	@Override
 	public void insert(T element) {
 		if (element == null) {
@@ -160,9 +166,7 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 	public static<T extends Comparable<T>> void sort(T[] arr) {
 		MyBinarySearchTree<T> tree = new MyBinarySearchTree<T>();
 		
-		for (int i = 0; i < arr.length; i++) {
-			tree.insert(arr[i]);
-		}
+		tree.buildFromArray(arr);
 		
 		DFSSwap(tree, arr, tree.root);
 		index = 0;
@@ -194,14 +198,14 @@ public class MyBinarySearchTree<T extends Comparable<T>> implements
 	
 	private static <T extends Comparable<T>> boolean DFSCompare(Node<T> firstNode, 
 																Node<T> secondNode) {
-		if (firstNode != null && secondNode != null) {
-			return (firstNode.data.equals(secondNode.data) &&
-					DFSCompare(firstNode.rightNode, secondNode.rightNode) &&
-					DFSCompare(firstNode.leftNode, secondNode.leftNode));
+		if ((firstNode == null) && (secondNode == null)) {
+			return true;			
 		}
 		
-		return true;
-	}
+		return (firstNode.data.equals(secondNode.data)
+				&& DFSCompare(firstNode.leftNode, secondNode.leftNode)
+				&& DFSCompare(firstNode.rightNode, secondNode.rightNode));
+}
 	
 	public void print() {
 		if (this.root == null) {

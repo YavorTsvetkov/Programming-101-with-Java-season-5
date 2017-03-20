@@ -6,13 +6,27 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Integer[] arr1 = {3, 1, 5, 4, 2};
-		Integer[] arr2 = {3, 4, 6, 9, 5, 7, 2, 8, 1};
+		Integer[] arr2 = {3, 1, 5, 4, 2};
 		
-		MyBinarySearchTree.sort(arr1);
-		MyBinarySearchTree.sort(arr2);
+		Integer[] arr3 = {43, 1, 5, 4, 2};
+		Integer[] arr4 = {3, 1, 5, 4, 2};
 		
-		printArray(arr1);
-		printArray(arr2);
+		MyBinarySearchTree<Integer> tree3 = new MyBinarySearchTree<Integer>();
+		MyBinarySearchTree<Integer> tree4 = new MyBinarySearchTree<Integer>();
+		
+		MyBinarySearchTree<Integer> tree1 = new MyBinarySearchTree<Integer>();
+		MyBinarySearchTree<Integer> tree2 = new MyBinarySearchTree<Integer>();
+		
+		tree1.buildFromArray(arr1);
+		tree2.buildFromArray(arr2);
+		
+		tree3.buildFromArray(arr3);
+		tree4.buildFromArray(arr4);
+		
+		System.out.println(MyBinarySearchTree.areEquals(tree1, tree2));
+		System.out.println(MyBinarySearchTree.areEquals(tree3, tree4));
+		System.out.println(MyBinarySearchTree.areEquals(tree1, tree3));
+		System.out.println(MyBinarySearchTree.areEquals(tree1, tree4));
 	}
 	
 	private static <T extends Comparable<T>> void printArray(T[] arr) {
