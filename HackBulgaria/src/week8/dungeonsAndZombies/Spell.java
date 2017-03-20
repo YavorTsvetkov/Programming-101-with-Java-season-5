@@ -1,4 +1,4 @@
-package week8;
+package week8.dungeonsAndZombies;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;

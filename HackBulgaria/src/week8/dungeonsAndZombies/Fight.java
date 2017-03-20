@@ -1,4 +1,4 @@
-package week8;
+package week8.dungeonsAndZombies;
 
 public class Fight {
 	private Hero hero;

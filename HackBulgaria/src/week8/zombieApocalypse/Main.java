@@ -1,4 +1,4 @@
-package week8;
+package week8.zombieApocalypse;
 
 public class Main {
 

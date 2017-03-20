@@ -1,4 +1,4 @@
-package week8;
+package week8.dungeonsAndZombies;
 
 import java.util.ArrayList;
 import java.util.List;
