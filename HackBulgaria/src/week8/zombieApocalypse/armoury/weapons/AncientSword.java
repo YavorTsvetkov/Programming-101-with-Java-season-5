@@ -4,22 +4,23 @@ import week8.zombieApocalypse.armoury.ToSmashWeapon;
 
 public class AncientSword extends ToSmashWeapon {
 
+	public AncientSword() {
+		super(50, 10);
+	}	
+	
 	@Override
 	public int getDamage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.getDamage();
 	}
 
 	@Override
 	public int getDurability() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.getDurability();
 	}
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return super.getType();
 	}
 
 }

@@ -3,23 +3,24 @@ package week8.zombieApocalypse.armoury.weapons;
 import week8.zombieApocalypse.armoury.ToShootWeapon;
 
 public class Revolver extends ToShootWeapon{
+	
+	public Revolver() {
+		super(15, 6);
+	}
 
 	@Override
 	public int getDamage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.getDamage();
 	}
 
 	@Override
 	public int getDurability() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.getDurability();
 	}
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return super.getType();
 	}
 
 }

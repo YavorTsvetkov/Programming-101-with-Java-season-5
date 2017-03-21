@@ -1,6 +1,6 @@
 package week8.zombieApocalypse.armoury;
 
-public abstract class ToShootWeapon implements WeaponInterface {
+public abstract class ToShootWeapon implements Weapon {
 	protected int damage;
 	protected int bullets;
 	protected static final String TYPE = "TO_SHOOT";
@@ -12,17 +12,13 @@ public abstract class ToShootWeapon implements WeaponInterface {
 	
 	@Override
 	public int getDamage() {
-		int damageInflicted = 0;
-		
 		if (this.bullets > 0) {
-			damageInflicted = this.damage;
 			this.bullets--;
+			return this.damage;
 			
 		} else {
-			damageInflicted = 1;
+			return 1;
 		}
-		
-		return damageInflicted;
 	}
 
 	@Override

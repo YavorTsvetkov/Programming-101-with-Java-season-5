@@ -1,6 +1,6 @@
 package week8.zombieApocalypse.armoury;
 
-public abstract class ToSmashWeapon implements WeaponInterface {
+public abstract class ToSmashWeapon implements Weapon {
 	protected int damage;
 	protected int initialDurability;
 	protected int currentDurability;
@@ -16,7 +16,7 @@ public abstract class ToSmashWeapon implements WeaponInterface {
 	public int getDamage() {
 		int damageInflicted = 0;
 		
-		if (this.currentDurability >= (this.initialDurability / 2)) {
+		if ((this.currentDurability - 1) >= (this.initialDurability / 2)) {
 			damageInflicted = this.damage;
 			
 		} else {
