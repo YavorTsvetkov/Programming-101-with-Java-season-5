@@ -1,7 +1,6 @@
 package week9;
 
 import java.sql.*;
-import com.mysql.*;
 
 public class MySQL {
 	static final String DB_URL = "jdbc:mysql://localhost/sqTesting";

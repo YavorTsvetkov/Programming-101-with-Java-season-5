@@ -39,10 +39,6 @@ public class MySql {
 				System.out.printf("rows affected %d%n%n", rows);
 			}
 			
-			
-			
-			
-			
 			query = "SELECT * FROM clients";
 			ResultSet rs = stmt.executeQuery(query);
 			
@@ -53,12 +49,9 @@ public class MySql {
 				System.out.printf("name: %s age: %d%n", name, age);
 			}
 			
-			
 		} catch (SQLException e) {
 			
 		}
 		
 	}
-	
-	
 }
